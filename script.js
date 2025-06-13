@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded",() => {
 
+    const { createClient } = supabase;
+    const client = createClient("https://rycwrceugcjtltylppou.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5Y3dyY2V1Z2NqdGx0eWxwcG91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4MjEyNDUsImV4cCI6MjA2NTM5NzI0NX0.I4m3NIE8v3j1dWSOtrNSlnfteEVqAPVkOJMTJtNXxW4");
+
     let start_input = document.getElementById("start_input");
     let finish_input = document.getElementById("finish_input");
     let today_input = document.getElementById("today_input");
@@ -10,6 +13,17 @@ document.addEventListener("DOMContentLoaded",() => {
     let start_weight = null;
     let finish_weight = null;
     let today_weight = null;
+
+    document.getElementById("login_btn").addEventListener("click", async () => {
+    const { error } = await client.auth.signInWithOAuth({
+        provider: 'google'
+    });
+
+    if (error) {
+        console.error("Fehler beim Login:", error.message);
+    }
+});
+
 
     today_btn.addEventListener("click", () => {
         start_weight = parseFloat(start_input.value);
