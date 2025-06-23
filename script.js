@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const sessionCheck = await client.auth.getSession();
     console.log("Aktive Session:", sessionCheck);
 
+    console.log("Login Button:", loginBtn);
+    console.log("Logout Button:", logoutBtn);
+    console.log("User Info:", userInfo);
+
+
     const start_input = document.getElementById("start_input");
     const finish_input = document.getElementById("finish_input");
     const today_input = document.getElementById("today_input");
